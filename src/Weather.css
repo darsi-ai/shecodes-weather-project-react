@@ -1,0 +1,17 @@
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.Weather {
+    max-width: 600px;
+    border: 1px #425F57 solid;
+    border-radius: 4px;
+    margin: 0 auto;
+    padding: 10px;
+
+}
+
+#degrees-value {
+    font-size: 25px;
+}
