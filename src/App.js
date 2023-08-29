@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <Weather />
+        <Weather defaultCity = "Kyiv"/>
       <footer id="github-link">my open-source code on{" "}
         <a href="https://github.com/darsi-ai" target="_blank" rel="noreferrer">github</a>
       </footer>
