@@ -5,11 +5,12 @@ import ShowWeather from "./ShowWeather";
 import "./Weather.css"
 
 export default function Weather(props) {
+    const apiKey = "64e797c428bddfb60f42d1075443623c";
     const [weather, setWeather] = useState({ready: false});
     const [cityInput, setCityInput] = useState(props.defaultCity);
 
     function handleResponse(response) {
-        // console.log(response.data);
+         console.log(response.data);
         setWeather({
             ready: true,
             city: response.data.name,
@@ -24,10 +25,16 @@ export default function Weather(props) {
     }
 
     function search() {
-        const apiKey = "64e797c428bddfb60f42d1075443623c";
         let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=${apiKey}&units=metric`;
         axios.get(apiUrl).then(handleResponse);
         return("loading...");
+    }
+
+    function searchGeo(position){
+        let lat = position.coords.latitude;
+        let lon = position.coords.longitude;
+        let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+        axios.get(url).then(handleResponse);
     }
 
     function handleSubmit(event) {
@@ -37,6 +44,11 @@ export default function Weather(props) {
 
     function handleCityInput(event) {
         setCityInput(event.target.value);
+    }
+
+    function handleCurrent(event) {
+        event.preventDefault();
+        navigator.geolocation.getCurrentPosition(searchGeo);
     }
 
     if(weather.ready) {
@@ -51,7 +63,7 @@ export default function Weather(props) {
                             <input type="submit" value="search" className="btn btn-light" />
                         </div>
                         <div className="col-3">
-                            <button type="button" className="btn btn-secondary" id="current-button" >current</button>
+                            <button type="button" className="btn btn-secondary" id="current-button" onClick={handleCurrent}>current</button>
                         </div>
                     </div>
                 </form>
