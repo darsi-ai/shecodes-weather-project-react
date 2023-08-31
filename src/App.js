@@ -8,8 +8,8 @@ function App() {
     <div className="App">
       <div className="container">
         <Weather defaultCity = "Kyiv"/>
-      <footer id="github-link">my open-source code on{" "}
-        <a href="https://github.com/darsi-ai" target="_blank" rel="noreferrer">github</a>
+      <footer id="github-link">my {" "}
+        <a href="https://github.com/darsi-ai/shecodes-react" target="_blank" rel="noreferrer">open-source code</a> on github
       </footer>
       </div>
     </div>
