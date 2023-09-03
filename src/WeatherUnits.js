@@ -2,6 +2,9 @@ import React, {useState} from "react";
 
 import "./WeatherUnits.css";
 
+
+// not used anywhere but i wanted to save the code pattern
+
 export default function WeatherUnits(props) {
     const [unit, setUnit] = useState("celsius");
 

@@ -1,0 +1,11 @@
+.WeatherForecast {
+    text-align: center;
+}
+
+.forecast-day {
+    font-size: 19px;
+}
+
+.forecast-temp-min {
+    color: #5c636a;
+}

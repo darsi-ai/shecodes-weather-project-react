@@ -1,6 +1,6 @@
 export default function FormattedDate(props) {
     const time = props.date;
-    const days = ["monday","tuesday","wednesday","thursday","friday","saturday","sunday"];
+    const days = ["sunday", "monday","tuesday","wednesday","thursday","friday","saturday"];
     const months = [
         "January",
         "February",
@@ -16,7 +16,7 @@ export default function FormattedDate(props) {
         "December"
       ];
     
-      let day = days[time.getDay()-1];
+    let day = days[time.getDay()];
     let month = months[time.getMonth()];
     let dayDate = time.getDate();
     return(`${day}, ${month} ${dayDate}`)

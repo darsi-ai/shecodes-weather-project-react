@@ -1,16 +1,16 @@
 import React, {useState} from "react";
 import axios from "axios";
 import ShowWeather from "./ShowWeather";
+import WeatherForecast from "./WeatherForecast";
 
 import "./Weather.css"
 
 export default function Weather(props) {
-    const apiKey = "64e797c428bddfb60f42d1075443623c";
+    const apiKey = "77575f133ee4771d2e9e46e03a43c441";
     const [weather, setWeather] = useState({ready: false});
     const [cityInput, setCityInput] = useState(props.defaultCity);
 
     function handleResponse(response) {
-         console.log(response.data);
         setWeather({
             ready: true,
             city: response.data.name,
@@ -20,7 +20,9 @@ export default function Weather(props) {
             clouds: response.data.weather[0].description,
             windSpeed: response.data.wind.speed,
             date: new Date(response.data.dt * 1000),
-            icon: response.data.weather[0].icon
+            icon: response.data.weather[0].icon,
+            latitude: response.data.coord.lat,
+            longitude: response.data.coord.lon
         });
     }
 
@@ -68,6 +70,7 @@ export default function Weather(props) {
                     </div>
                 </form>
             <ShowWeather info = {weather}/>
+            <WeatherForecast lat = {weather.latitude} lon = {weather.longitude}/>
         </div>
         )
     } else {
